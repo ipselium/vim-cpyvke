@@ -49,15 +49,14 @@ xnoremap <Plug>(IPython-RunLinesAsTopLevel) :python3 dedent_run_these_lines()<CR
 noremap  <Plug>(IPython-UpdateShell)        :python3 if update_subchannel_msgs(force=True): vim_echo("IPython shell updated",'Operator')<CR>
 
 if g:ipy_perform_mappings != 0
-    map  <buffer> <silent> <F5>           <Plug>(IPython-RunFile)
-    map  <buffer> <silent> <S-F5>         <Plug>(IPython-RunLine)
-    map  <buffer> <silent> <F9>           <Plug>(IPython-RunLines)
-    map  <buffer> <silent> <LocalLeader>s <Plug>(IPython-UpdateShell)
-    imap <buffer>          <C-F5>         <C-o><Plug>(IPython-RunFile)
-    imap <buffer>          <S-F5>         <C-o><Plug>(IPython-RunLines)
-    imap <buffer> <silent> <F5>           <C-o><Plug>(IPython-RunFile)
-    map  <buffer> <silent> <M-s>          <Plug>(IPython-RunLineAsTopLevel)
-    xmap <buffer> <silent> <M-s>          <Plug>(IPython-RunLinesAsTopLevel)
+    map  <buffer> <silent> <F5>            <Plug>(IPython-RunFile)
+    map  <buffer> <silent> <F9>            <Plug>(IPython-RunLine)
+    map  <buffer> <silent> <F10>           <Plug>(IPython-RunLines)
+    map  <buffer> <silent> <LocalLeader>s  <Plug>(IPython-UpdateShell)
+    imap <buffer>          <F10>           <C-o><Plug>(IPython-RunLines)
+    imap <buffer> <silent> <F5>            <C-o><Plug>(IPython-RunFile)
+    map  <buffer> <silent> <C-c><F9>       <Plug>(IPython-RunLineAsTopLevel)
+    xmap <buffer> <silent> <C-c><F10>      <Plug>(IPython-RunLinesAsTopLevel)
 endif
 
 command! -nargs=* IPython :py3 km_from_string("<args>")

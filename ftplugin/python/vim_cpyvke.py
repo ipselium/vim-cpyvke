@@ -3,7 +3,7 @@
 """
 File Name : vim_cpyvke.py
 Creation Date : mar. 06 mars 2018 17:27:32 CET
-Last Modified : mar. 06 mars 2018 20:48:57 CET
+Last Modified : mar. 06 mars 2018 23:03:44 CET
 Created By : Cyril Desjouy
 
 Copyright © 2016-2018 Cyril Desjouy <ipselium@free.fr>
@@ -15,7 +15,6 @@ DESCRIPTION
 @author: Cyril Desjouy
 """
 
-import sys
 import re
 import os
 from queue import Empty
@@ -361,12 +360,6 @@ def run_this_line(dedent=False):
         line = line.lstrip()
     msg_id = send(line)
     print_prompt(line, msg_id)
-
-
-@with_subchannel
-def run_command(cmd):
-    msg_id = send(cmd)
-    print_prompt(cmd, msg_id)
 
 
 @with_subchannel
