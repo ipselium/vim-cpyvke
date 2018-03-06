@@ -3,7 +3,7 @@
 """
 File Name : vim_cpyvke.py
 Creation Date : mar. 06 mars 2018 17:27:32 CET
-Last Modified : mar. 06 mars 2018 23:03:44 CET
+Last Modified : mer. 07 mars 2018 00:43:47 CET
 Created By : Cyril Desjouy
 
 Copyright © 2016-2018 Cyril Desjouy <ipselium@free.fr>
@@ -38,40 +38,12 @@ show_execution_count = True  # wait to get numbers for In[43]: feedback?
 monitor_subchannel = True    # update vim-ipython 'shell' on every send?
 run_flags = "-i"             # flags to for IPython's run magic when using <F5>
 
-# this allows us to load vim_ipython multiple times
-try:
-    km
-    kc
-    pid
-except NameError:
-    km = None
-    kc = None
-    pid = None
-
 
 # from http://serverfault.com/questions/71285/in-centos-4-4-how-can-i-strip-escape-sequences-from-a-text-file
 strip = re.compile('\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]')
 
 # get around unicode problems when interfacing with vim
 vim_encoding = vim.eval('&encoding') or 'utf-8'
-
-
-# IPython complains if stderr and stdout don't have flush
-# this is fixed in newer version of Vim
-#try:
-#    sys.stdout.flush
-#except AttributeError:
-#    class WithFlush(object):
-#
-#        def __init__(self, noflush):
-#            self.write = noflush.write
-#            self.writelines = noflush.writelines
-#
-#        def flush(self):
-#            pass
-#
-#    sys.stdout = WithFlush(sys.stdout)
-#    sys.stderr = WithFlush(sys.stderr)
 
 
 def vim_echo(arg, style="Question"):
@@ -109,6 +81,13 @@ status_prompt_colors = {
 }
 
 status_blank_lines = int(vim_variable('g:ipy_status_blank_lines', '1'))
+
+try:
+    kc
+    km
+except NameError:
+    kc = None
+    km = None
 
 
 def new_kernel():
@@ -214,6 +193,8 @@ def update_subchannel_msgs(debug=False, force=False):
             vim.command("set bufhidden=hide buftype=nofile ft=python")
             # don't come up in buffer lists
             vim.command("setlocal nobuflisted")
+            # no folders
+            vim.command("setlocal foldlevel=99")
             # no line numbers, we have in/out nums
             vim.command("setlocal nonumber")
             # no swap file (so no complaints cross-instance)
@@ -341,9 +322,15 @@ def with_subchannel(f, *args):
             f(*args)
             if monitor_subchannel:
                 update_subchannel_msgs(force=True)
-        except AttributeError:   # if kc is None
+        except NameError:  # Send not defined
             vim_echo("Not connected to IPython", 'Error')
     return f_with_update
+
+
+@with_subchannel
+def run_command(cmd):
+    msg_id = send(cmd)
+    print_prompt(cmd, msg_id)
 
 
 @with_subchannel

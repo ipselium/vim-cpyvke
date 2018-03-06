@@ -40,23 +40,27 @@ au FocusGained *.*,vim-cpyvke :python3 if update_subchannel_msgs(): vim_echo("IP
 au BufEnter vim-cpyvke :python3 if update_subchannel_msgs(): vim_echo("IPython shell updated (on buffer enter)",'Operator')
 
 " Setup plugin mappings for the most common ways to interact with ipython.
-noremap  <Plug>(IPython-RunFile)            :python3 run_this_file()<CR>
-noremap  <Plug>(IPython-RunLine)            :python3 run_this_line()<CR>
-noremap  <Plug>(IPython-RunLines)           :python3 run_these_lines()<CR>
-noremap  <Plug>(IPython-PlotCloseAll)       :python3 run_command("plt.close('all')")<CR>
-noremap  <Plug>(IPython-RunLineAsTopLevel)  :python3 dedent_run_this_line()<CR>
-xnoremap <Plug>(IPython-RunLinesAsTopLevel) :python3 dedent_run_these_lines()<CR>
-noremap  <Plug>(IPython-UpdateShell)        :python3 if update_subchannel_msgs(force=True): vim_echo("IPython shell updated",'Operator')<CR>
+noremap <Plug>(IPython-AutoConnect)        :python3 connect_cpyvke_kernel()<CR>
+noremap <Plug>(IPython-RunFile)            :python3 run_this_file()<CR>
+noremap <Plug>(IPython-RunLine)            :python3 run_this_line()<CR>
+noremap <Plug>(IPython-RunLines)           :python3 run_these_lines()<CR>
+noremap <Plug>(IPython-CloseAll)           :python3 run_command("plt.close('all')")<CR>
+noremap <Plug>(IPython-RunLineAsTopLevel)  :python3 dedent_run_this_line()<CR>
+noremap <Plug>(IPython-RunLinesAsTopLevel) :python3 dedent_run_these_lines()<CR>
+noremap <Plug>(IPython-UpdateShell)        :python3 if update_subchannel_msgs(force=True): vim_echo("IPython shell updated",'Operator')<CR>
 
 if g:ipy_perform_mappings != 0
+    map  <buffer> <silent> <C-c>c          <Plug>(IPython-AutoConnect)
     map  <buffer> <silent> <F5>            <Plug>(IPython-RunFile)
     map  <buffer> <silent> <F9>            <Plug>(IPython-RunLine)
     map  <buffer> <silent> <F10>           <Plug>(IPython-RunLines)
     map  <buffer> <silent> <LocalLeader>s  <Plug>(IPython-UpdateShell)
-    imap <buffer>          <F10>           <C-o><Plug>(IPython-RunLines)
     imap <buffer> <silent> <F5>            <C-o><Plug>(IPython-RunFile)
+    imap <buffer>          <F9>            <C-o><Plug>(IPython-RunLine)
+    imap <buffer>          <F10>           <C-o><Plug>(IPython-RunLines)
     map  <buffer> <silent> <C-c><F9>       <Plug>(IPython-RunLineAsTopLevel)
-    xmap <buffer> <silent> <C-c><F10>      <Plug>(IPython-RunLinesAsTopLevel)
+    map  <buffer> <silent> <C-c><F10>      <Plug>(IPython-RunLinesAsTopLevel)
+    map  <buffer> <silent> <C-c><F4>       <Plug>(IPython-CloseAll)
 endif
 
 command! -nargs=* IPython :py3 km_from_string("<args>")
