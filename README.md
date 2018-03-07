@@ -3,7 +3,7 @@
 # vim-cpyvke
 
 **vim-cpyvke** is a *vim* plugin that provides a kind of integration of IPython
-and **cpyvke** (www.github.com/ipselium/cpyvke) to vim. This plugin is a
+and **cpyvke** (www.github.com/ipselium/cpyvke) to *vim*. This plugin is a
 minimal version of Paul Ivanov's **vim-ipython** plugin :
 
 * www.github.com/ivanov/vim-ipython
@@ -18,7 +18,7 @@ development environment for Python in console.
 
 ## Installation
 
-Install `vim-cpyvke` with vundle. Add
+Install **vim-cpyvke** with vundle. Add
 
 `Plugin 'ipselium/vim-cpyvke'`
 
@@ -31,17 +31,16 @@ to your vimrc, then
 First, start **cpyvke**, then open a Python script with *vim*. Following
 shortcuts are now available in vim:
 
-`C-c c` : Autoconnect to same kernel as cpyvke
-`F5` : Run the current buffer
-`F9`: Run the current line
-`F10`: Run the selected lines (in visual mode)
+* `C-c c` : Autoconnect to same kernel as **cpyvke**
+* `F5` : Run the current buffer
+* `F9`: Run the current line
+* `F10`: Run the selected lines (in visual mode)
 
 - - -
 
 ## Requirement
 
-* cpyvke
-* Tested with **python 3.5 only**
+* cpyvke : www.github.com/ipselium/cpyvke
 
 - - -
 
