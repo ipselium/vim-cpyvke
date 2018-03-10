@@ -1,16 +1,35 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
+#
+# Adapted from Paul Ivanov's vim-ipython
+#       * http://pirsquared.org
+#       * www.github.com/sophAi/vim-ipython_py3
+#       * www.github.com/ivanov/vim-ipython
+#
+# Copyright © Paul Ivanov
+# Copyright © 2016-2018 Cyril Desjouy <ipselium@free.fr>
+#
+# This file is part of vim-cpyvke
+#
+# vim_cpyvke is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# vim_cpyvke is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with vim_cpyvke. If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Creation Date : mar. 06 mars 2018 17:27:32 CET
+# Last Modified : mer. 05 mars 2018 00:43:47 CET
 """
-File Name : vim_cpyvke.py
-Creation Date : mar. 06 mars 2018 17:27:32 CET
-Last Modified : mer. 07 mars 2018 00:43:47 CET
-Created By : Cyril Desjouy
-
-Copyright © 2016-2018 Cyril Desjouy <ipselium@free.fr>
-Distributed under terms of the BSD license.
-
 -----------
-DESCRIPTION
+DOCSTRING
 
 @author: Cyril Desjouy
 """

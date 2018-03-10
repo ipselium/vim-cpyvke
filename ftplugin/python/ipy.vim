@@ -1,12 +1,12 @@
 " Vim integration with Cpyvke
 "
+" Copyright © Paul Ivanov
 " Copyright © 2016-2018 Cyril Desjouy <ipselium@free.fr>
-" Distributed under terms of the BSD license.
+" Distributed under terms of the GPLv3 license.
 "
-" @author: Cyril Desjouy
 "
-" ADAPTED FROM : Paul Ivanov (http://pirsquared.org)
-"
+" Adapted from Paul Ivanov's vim-ipython
+" 	* http://pirsquared.org
 " 	* www.github.com/sophAi/vim-ipython_py3
 " 	* www.github.com/ivanov/vim-ipython
 "
