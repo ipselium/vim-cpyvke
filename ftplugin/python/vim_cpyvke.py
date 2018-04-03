@@ -120,13 +120,13 @@ def new_kernel():
 
 
 def connect_cpyvke_kernel():
-    cpyvke_cf = os.path.expanduser('~') + '/.cpyvke/LastKernel'
+    cpyvke_cf = os.path.expanduser('~') + '/.cpyvke/kd5.lock'
     if os.path.exists(cpyvke_cf):
         with open(cpyvke_cf, 'r') as f:
-            cf = f.read().split("\n")[-2].lstrip().split(' ')[-1]
+            cf = f.read()
         return km_from_string(cf)
     else:
-        vim_echo('Kernel not found (See ~/.cpyvke/LastKernel)', 'Error')
+        vim_echo('Kernel not found (See ~/.cpyvke/kd5.lock)', 'Error')
 
 
 def km_from_string(s=''):

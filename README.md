@@ -16,7 +16,7 @@ development environment for Python in console.
 
 - - -
 
-## Installation
+## Installation with Vundle
 
 Install **vim-cpyvke** with vundle. Add
 
